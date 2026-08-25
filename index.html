@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Message ✉️</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #111;
+      font-family: sans-serif;
+    }
+    .text {
+      color: #fff;
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .envelope-wrapper {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: #333;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .envelope-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 0;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      border-top: 120px solid #444;
+      transform-origin: top;
+      transition: transform 0.6s ease-in-out, z-index 0.6s;
+      z-index: 3;
+    }
+    .envelope-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 0;
+      border-left: 150px solid #222;
+      border-right: 150px solid #222;
+      border-bottom: 100px solid #1a1a1a;
+      border-radius: 0 0 10px 10px;
+      z-index: 2;
+    }
+    .card {
+      position: absolute;
+      top: 10px; left: 10px;
+      width: 280px;
+      border-radius: 6px;
+      transition: transform 0.8s ease-in-out 0.3s, z-index 0.8s;
+      z-index: 1;
+    }
+    .envelope-wrapper.open::before {
+      transform: rotateX(180deg);
+      z-index: 0;
+    }
+    .envelope-wrapper.open .card {
+      transform: translateY(-220px) scale(1.05);
+      z-index: 4;
+    }
+  </style>
+</head>
+<body>
+  <div class="text">✉️ Tap the envelope to open!</div>
+  <div class="envelope-wrapper" id="env" onclick="this.classList.toggle('open')">
+    <img class="card" src="https://ibb.co/zTYcDR6f" alt="
+Card">
+  </div>
+</body>
+  </html>
+  
